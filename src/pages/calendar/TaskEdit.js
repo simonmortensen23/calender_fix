@@ -22,10 +22,12 @@ function TaskEdit() {
     task_info:'',
     due_date:'',
     task_status: '',
+    members: [],
+    membership: '',
     
   })
 
-  const {title, task_info, due_date, task_status} = taskData;
+  const {title, task_info, due_date, task_status, members, membership} = taskData;
   const history = useHistory();
   const { id } = useParams()
 
@@ -33,10 +35,10 @@ function TaskEdit() {
     const handleMount = async () => {
         try {
             const {data} = await axiosReq.get(`/calender/${id}/`)
-            const { title, task_info, due_date, task_status, is_owner } = data
+            const { title, task_info, due_date, task_status, is_owner, members, membership } = data
             const parsed_due_date = new Date(due_date).toISOString().substring(0, 10);
 
-            setTaskData({ title, task_info, due_date: parsed_due_date, task_status })
+            setTaskData({ title, task_info, due_date: parsed_due_date, task_status, members, membership })
         } catch (err){
             console.log(err)
         }
@@ -99,6 +101,9 @@ function TaskEdit() {
       <option value='C'>Done</option>
     </Form.Control>
     </Form.Group>
+    <Form.Group>
+   
+    </Form.Group>
   <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => history.goBack()}
@@ -115,22 +120,86 @@ function TaskEdit() {
 
 
   return (
-    <Form onSubmit={handleSubmit}>
-    <Row>
-      <Col className="py-2 p-0 p-md-2 d-md-none" md={7} lg={8}>
-        <Container
-          className={`d-flex justify-content-center`}
-        >
-       
-          <div className="d-md-none">{formFields}</div>
-        </Container>
-      </Col>
-      <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-        <Container className={`d-flex justify-content-center`}>{formFields}</Container>
-      </Col>
-    </Row>
-  </Form>
+    <Container>
+      <Form onSubmit={handleSubmit}>
+        <Row>
+          <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
+            <Container
+              className={`d-flex justify-content-center`}
+            >
+                
+              <div className="">{formFields}</div>
+            </Container>
+          </Col>
+          {/* <Col md={5} lg={4} className="p-0 p-md-2">
+            <Container className={`d-flex justify-content-center`}>{formFields}</Container>
+          </Col> */}
+        </Row>
+        
+      </Form>
+      
+      <MemberList members={members} />  
+    </Container>
+
+    
+    
   )
 }
+
+function MemberList({ members, membership }) {
+
+  const onMemberClick = (member) => {
+    console.log(' on member click:', member);
+  };
+
+  return (
+    <Container>
+    
+      {members.map((member, i) => (
+        <div key={i}>
+          <div>name: {member.username}</div>
+          <div>membership: {membership}</div>
+          <img alt='edit' className="edit-icon" onClick={() => onMemberClick(member)} />
+        </div>
+      ))}
+    </Container>
+  )
+}
+
+function AddMember() {
+    const [show, setShow] = useState(false);
+  
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+  
+    return (
+      <>
+        <Button variant="primary" onClick={handleShow}>
+          Launch static backdrop modal
+        </Button>
+  
+        <Modal
+          show={show}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Modal title</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            I will not close if you click outside me. Don't even try to press
+            escape key.
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary">Understood</Button>
+          </Modal.Footer>
+        </Modal>
+      </>
+    );
+  }
 
 export default TaskEdit
