@@ -19,7 +19,7 @@ function TasksList(props) {
   const [hasLoaded, setHasLoaded] = useState(false)
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
-  const isOwner = currentUser?.username === owner; 
+  const is_owner = currentUser?.username === owner; 
   
   
 

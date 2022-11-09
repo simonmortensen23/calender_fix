@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -10,9 +10,10 @@ import btnStyles from "../../styles/Button.module.css"
 
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefault";
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 
-function TaskCreate() {
+function TaskEdit() {
 
   const [errors, setErrors] = useState({});
 
@@ -26,7 +27,22 @@ function TaskCreate() {
 
   const {title, task_info, due_date, task_status} = taskData;
   const history = useHistory();
+  const { id } = useParams()
 
+  useEffect(() => {
+    const handleMount = async () => {
+        try {
+            const {data} = await axiosReq.get(`/calender/${id}/`)
+            const { title, task_info, due_date, task_status, is_owner } = data
+            const parsed_due_date = new Date(due_date).toISOString().substring(0, 10);
+
+            setTaskData({ title, task_info, due_date: parsed_due_date, task_status })
+        } catch (err){
+            console.log(err)
+        }
+    }
+    handleMount()
+  }, [history, id]);
 
   const handleChange = (event) => {
     console.log({name: event.target.name, value: event.target.value});
@@ -47,8 +63,8 @@ function TaskCreate() {
     
 
     try {
-      const {data} = await axiosReq.post('/calender/', taskData);
-      history.push(`/calender/${data.id}`);
+      await axiosReq.put(`/calender/${id}/`, taskData);
+      history.push(`/calender/${id}`);
     }catch(err) {
       if (err.response?.status !== 401){
         setErrors(err.response?.data)
@@ -90,7 +106,7 @@ function TaskCreate() {
         cancel
       </Button>
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        create
+        save
       </Button>
   
     </div>
@@ -117,4 +133,4 @@ function TaskCreate() {
   )
 }
 
-export default TaskCreate
+export default TaskEdit

@@ -8,6 +8,7 @@ import './api/axiosDefault';
 import TaskCreate from "./pages/calendar/TaskCreate";
 import TaskOverview from "./pages/calendar/TaskOverview";
 import TasksList from "./pages/calendar/TasksList"
+import TaskEdit from "./pages/calendar/TaskEdit";
 
 
 
@@ -23,6 +24,7 @@ function App() {
       <Switch>
         <Route exact path='/' render={() => <TasksList message="No tasks found. Adjust your filters."/>} />
         <Route exact path='/calender/create' render={() => <TaskCreate />} />
+        <Route exact path='/calender/:id/edit' render={() => <TaskEdit />} />
         <Route exact path='/calender/:id' render={() => <TaskOverview />} />
         <Route exact path='/calender' render={() => <h1>Hey</h1>} />
         <Route exact path='/signin' render={() => <SignInForm />} />
