@@ -25,14 +25,19 @@ const NavBar = () => {
 
   const loggedInIcons = (
     <>
+    <NavLink className={styles.NavLink} to='/'>
+        <i className="fas fa-list"></i>
+        {currentUser?.username}'s tasks'
+      </NavLink>
+      <NavLink className={styles.NavLink} to='/'>
+        <i className="fas fa-list"></i>
+        Others tasks
+      </NavLink>
       <NavLink className={styles.NavLink} to='/' onClick={handleSignOut}>
         <i className="fas fa-sign-out-alt"></i>
         Logout
       </NavLink> 
-      <NavLink className={styles.NavLink} to='/'>
-        <i className="fas fa-list"></i>
-        {currentUser?.username}
-      </NavLink>
+      
     </>
   );
 

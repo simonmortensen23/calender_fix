@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import { Modal } from 'react-bootstrap';
 import Alert from "react-bootstrap/Alert";
 
 import btnStyles from "../../styles/Button.module.css"
@@ -62,6 +63,7 @@ function TaskEdit() {
     taskData.append('task_info', task_info)
     taskData.append('due_date', due_date)
     taskData.append('status', task_status)
+    taskData.append('members', members)
     
 
     try {
@@ -146,60 +148,94 @@ function TaskEdit() {
   )
 }
 
-function MemberList({ members, membership }) {
+function MemberList({ members, username }) {
+
+  const [show, setShow] = useState(false);
+  
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const [taskData, setTaskData] = useState({
+    username: '',
+  })
+
+    
+  const history = useHistory();
+  const { id } = useParams()
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (event) => {
+    console.log({name: event.target.name, value: event.target.value});
+    setTaskData({
+      ...taskData,
+      [event.target.name]: event.target.value,
+    })
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    const taskData = new FormData();
+
+   
+    taskData.append('username', username)
+    
+
+    try {
+      await axiosReq.post(`/calender/${id}/add_member`, taskData);
+      history.push(`/calender/${id}`);
+    }catch(err) {
+      if (err.response?.status !== 401){
+        setErrors(err.response?.data)
+      }
+    }
+  }
+  
+
 
   const onMemberClick = (member) => {
     console.log(' on member click:', member);
   };
 
   return (
+    <>
     <Container>
     
-      {members.map((member, i) => (
+      {members.map((member, membership, i) => (
         <div key={i}>
           <div>name: {member.username}</div>
-          <div>membership: {membership}</div>
-          <img alt='edit' className="edit-icon" onClick={() => onMemberClick(member)} />
+          <div>membership: {membership.human}</div>
+          <Button variant="primary" onClick={handleShow}>
+          Add Member
+        </Button>
         </div>
       ))}
     </Container>
-  )
-}
-
-function AddMember() {
-    const [show, setShow] = useState(false);
-  
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-  
-    return (
-      <>
-        <Button variant="primary" onClick={handleShow}>
-          Launch static backdrop modal
-        </Button>
-  
-        <Modal
+    <Modal
           show={show}
           onHide={handleClose}
           backdrop="static"
           keyboard={false}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Modal title</Modal.Title>
+            <Modal.Title>Add Member</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            I will not close if you click outside me. Don't even try to press
-            escape key.
+          <Form.Group>
+    <Form.Label>Title</Form.Label>
+    <Form.Control type="text" name='add member' placeholder="Add a new member" value={username} onChange={handleChange} />
+  </Form.Group>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary">Understood</Button>
+            <Button onClick={handleSubmit} variant="primary">Add Member</Button>
           </Modal.Footer>
         </Modal>
-      </>
-    );
-  }
+    </>
+  )
+}
+
+
 
 export default TaskEdit
