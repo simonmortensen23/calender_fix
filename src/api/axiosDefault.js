@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL='https://task-planner-api-2022.herokuapp.com'
+axios.defaults.baseURL='https://event-api-c33l.onrender.com'
 
 // axios.defaults.baseURL='https://8000-simonmorten-calenderapi-jupvamuj9r8.ws-eu72.gitpod.io/'
 axios.defaults.headers.post['Content-Type'] = 'multipart/form-data'

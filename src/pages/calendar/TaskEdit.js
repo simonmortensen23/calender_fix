@@ -148,7 +148,7 @@ function TaskEdit() {
   )
 }
 
-function MemberList({ members, username }) {
+function MemberList({ members }) {
 
   const [show, setShow] = useState(false);
   
@@ -165,23 +165,20 @@ function MemberList({ members, username }) {
   const [errors, setErrors] = useState({});
 
   const handleChange = (event) => {
-    console.log({name: event.target.name, value: event.target.value});
     setTaskData({
-      ...taskData,
-      [event.target.name]: event.target.value,
+      username: event.target.value,
     })
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    const taskData = new FormData();
-
-   
-    taskData.append('username', username)
+    const taskDataForm = new FormData();
+    taskDataForm.append('username', taskData?.username)
     
+    console.log('SENDING USERNAMNE', taskData?.username);
 
     try {
-      await axiosReq.post(`/calender/${id}/add_member`, taskData);
+      await axiosReq.post(`/calender/${id}/add_member`, taskDataForm);
       history.push(`/calender/${id}`);
     }catch(err) {
       if (err.response?.status !== 401){
@@ -222,7 +219,7 @@ function MemberList({ members, username }) {
           <Modal.Body>
           <Form.Group>
     <Form.Label>Title</Form.Label>
-    <Form.Control type="text" name='add member' placeholder="Add a new member" value={username} onChange={handleChange} />
+    <Form.Control type="text" name='add member' placeholder="Add a new member" value={taskData.username} onChange={handleChange} />
   </Form.Group>
           </Modal.Body>
           <Modal.Footer>
