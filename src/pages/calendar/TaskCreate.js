@@ -72,7 +72,7 @@ function TaskCreate() {
   </Form.Group>
     <Form.Group>
       <Form.Label>Due Date</Form.Label>
-      <Form.Control type='date' name='due_date' value={due_date} onChange={handleChange} />
+      <Form.Control type='datetime' name='due_date' value={due_date} onChange={handleChange} />
     </Form.Group>
     <Form.Group>
     
