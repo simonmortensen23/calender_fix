@@ -186,6 +186,8 @@ function MemberList({ members }) {
       }
     }
   }
+
+  console.log({ members })
   
 
 
@@ -197,15 +199,16 @@ function MemberList({ members }) {
     <>
     <Container>
     
-      {members.map((member, membership, i) => (
+      {members.map((member, i) => (
         <div key={i}>
           <div>name: {member.username}</div>
-          <div>membership: {membership.human}</div>
-          <Button variant="primary" onClick={handleShow}>
-          Add Member
-        </Button>
+          <div>membership: {member.human}</div>
+          
         </div>
       ))}
+      <Button variant="primary" onClick={handleShow}>
+          Add Member
+        </Button>
     </Container>
     <Modal
           show={show}

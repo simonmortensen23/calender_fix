@@ -9,7 +9,6 @@ import { axiosRes } from "../../api/axiosDefault";
 const CalenderPost = (props) => {
   const {
     id,
-    owner,
     title,
     task_info,
     due_date,
@@ -22,7 +21,7 @@ const CalenderPost = (props) => {
   } = props;
 
   const currentUser = useCurrentUser();
-  const is_owner = currentUser?.username === owner; 
+  const is_owner = membership?.value === 'A';
   const history = useHistory();
   
 
@@ -38,7 +37,7 @@ const CalenderPost = (props) => {
       console.log(err);
     }
   };
-
+  console.log({membership})
   return (
     <Card>
       <Card.Body>
@@ -59,7 +58,7 @@ const CalenderPost = (props) => {
       </ListGroup>
         
         
-        {taskOverview &&  (
+        {taskOverview && is_owner && (
           <Button onClick={handleEdit}>Edit</Button>
         )}
       </Card.Body>
