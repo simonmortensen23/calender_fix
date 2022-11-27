@@ -34,7 +34,7 @@ function TaskOverview() {
 
   return (
     <Row className="h-100">
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
+      <Col className="py-2 p-0 p-lg-2 col" lg={8}>
         
         <CalenderPost {...task.results[0]} setTasks={setTask} taskOverview />
       </Col>

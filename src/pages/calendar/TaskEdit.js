@@ -10,7 +10,7 @@ import Alert from "react-bootstrap/Alert";
 import btnStyles from "../../styles/Button.module.css"
 
 import { useHistory } from "react-router";
-import { axiosReq } from "../../api/axiosDefault";
+import { axiosReq, axiosRes } from "../../api/axiosDefault";
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 
@@ -187,6 +187,19 @@ function MemberList({ members }) {
     }
   }
 
+  const handleDelete = async () => {
+    
+    const taskDataForm = new FormData();
+    taskDataForm.append('username', taskData?.username)
+    console.log('SENDING USERNAMNE', taskData?.username);
+    try {
+      await axiosRes.delete(`/calender/${id}/remove_member`, taskDataForm);
+      history.goBack();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   console.log({ members })
   
 
@@ -202,7 +215,6 @@ function MemberList({ members }) {
       {members.map((member, i) => (
         <div key={i}>
           <div>name: {member.username}</div>
-          <div>membership: {member.human}</div>
           
         </div>
       ))}
@@ -230,6 +242,7 @@ function MemberList({ members }) {
               Close
             </Button>
             <Button onClick={handleSubmit} variant="primary">Add Member</Button>
+            <Button onClick={handleDelete} variant="primary">Delete Member</Button>
           </Modal.Footer>
         </Modal>
     </>

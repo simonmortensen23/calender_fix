@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useCurrentUser } from "../../context/CurrentUserContext";
 import { axiosRes } from "../../api/axiosDefault";
+import styles from '../../styles/CalenderPost.module.css'
 
 
 const CalenderPost = (props) => {
@@ -39,15 +40,15 @@ const CalenderPost = (props) => {
   };
   console.log({membership})
   return (
-    <Card>
+    <Card className={styles.Card}>
       <Card.Body>
         <Link to={`/calender/${id}`}>
-        {title && <Card.Title className='text-center'>{title}</Card.Title>}
+        {title && <Card.Title className={styles.Title}>{title}</Card.Title>}
           </Link>
       </Card.Body>
       <Card.Body>
-        {id && <Card.Text className='text-center'>Task ID:{id}</Card.Text>}
-        {task_info && <Card.Text className='text-center'>Task Info:{task_info}</Card.Text>}
+        {id && <Card.Text className='text-left'>Task ID: {id}</Card.Text>}
+        {task_info && <Card.Text className={styles.Info}>Task Info:<span className='text-danger'>{task_info}</span></Card.Text>}
         <ListGroup className="list-group-flush">
         {task_status && <ListGroup.Item>Status: {task_status}</ListGroup.Item>}
         {created_at && <ListGroup.Item>Created at: {created_at}</ListGroup.Item>}
@@ -59,7 +60,10 @@ const CalenderPost = (props) => {
         
         
         {taskOverview && is_owner && (
+          <>
           <Button onClick={handleEdit}>Edit</Button>
+          <Button onClick={handleDelete}>Delete</Button>
+          </>
         )}
       </Card.Body>
     </Card>

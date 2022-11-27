@@ -11,6 +11,7 @@ import { useCurrentUser, useSetCurrentUser } from '../../context/CurrentUserCont
 
 
 
+
 function TasksList(props) {
   const {
     owner
@@ -61,7 +62,7 @@ function TasksList(props) {
 
   return (
     <Row className="h-100">
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
+      <Col className="" lg={8}>
         
         {currentUser ? loggedInView : loggedOutView}
       </Col>

@@ -58,7 +58,7 @@ function TaskCreate() {
 
 
   const formFields = (
-    <div className="text-center">
+    <div className="text-center container">
        
   <Form.Group>
     <Form.Label>Title</Form.Label>
