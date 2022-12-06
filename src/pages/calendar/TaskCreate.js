@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 
 import btnStyles from "../../styles/Button.module.css"
+import styles from "../../styles/TaskCreate.module.css"
 
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefault";
@@ -78,9 +79,9 @@ function TaskCreate() {
     
       <Form.Control name='task_status' as='select' value={task_status} onChange={handleChange}>
       <option>Open this select menu</option>
-      <option value='A'>In Progress</option>
-      <option value='B'>Idle</option>
-      <option value='C'>Done</option>
+      <option value='IN PROGRESS'>In Progress</option>
+      <option value='IDLE'>Idle</option>
+      <option value='DONE'>Done</option>
     </Form.Control>
     </Form.Group>
   <Button
@@ -99,9 +100,9 @@ function TaskCreate() {
 
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form className={styles.Form} onSubmit={handleSubmit}>
     <Row>
-      <Col className="py-2 p-0 p-md-2 d-md-none" md={7} lg={8}>
+      <Col className="py-2 p-0 p-md-2  d-md-none" md={7} lg={8}>
         <Container
           className={`d-flex justify-content-center`}
         >

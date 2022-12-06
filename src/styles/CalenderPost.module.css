@@ -3,6 +3,8 @@
     background-color: #FFFDD0;
     padding: 20px;
     margin: 20px;
+    border: 2px solid green;
+    
 }
 
 .Title {
@@ -16,6 +18,6 @@
 
 .Info {
     text-align: center;
-    border: 5px solid green;
+    border: 1px solid green;
     font-weight: 400;
 }

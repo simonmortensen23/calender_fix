@@ -7,6 +7,9 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import Image from "react-bootstrap/Image";
+
+import login from '../../assets/login.png'
 
 import { Link, useHistory } from "react-router-dom";
 
@@ -54,7 +57,7 @@ function SignInForm() {
         <Container className={`${appStyles.Content} p-4 `}>
           <h1 className={styles.Header}>sign in</h1>
           <Form onSubmit={handleSubmit}>
-                <Form.Group controlId="username">
+                <Form.Group className="mb-3" controlId="username">
                     <Form.Label className="d-none">Username</Form.Label>
                     <Form.Control 
                         type="text" 
@@ -71,7 +74,7 @@ function SignInForm() {
               </Alert>
             ))}
 
-                <Form.Group controlId="password">
+                <Form.Group className="mb-3" controlId="password">
                     <Form.Label className="d-none">Password</Form.Label>
                     <Form.Control 
                         type="password" 
@@ -111,6 +114,10 @@ function SignInForm() {
         md={6}
         className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}
       >
+        <Image
+          className={`${appStyles.FillerImage}`}
+          src={login}
+        />
       </Col>
     </Row>
   );

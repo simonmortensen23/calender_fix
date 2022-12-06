@@ -188,12 +188,10 @@ function MemberList({ members }) {
   }
 
   const handleDelete = async () => {
-    
-    const taskDataForm = new FormData();
-    taskDataForm.append('username', taskData?.username)
+   
     console.log('SENDING USERNAMNE', taskData?.username);
     try {
-      await axiosRes.delete(`/calender/${id}/remove_member`, taskDataForm);
+      await axiosRes.delete(`/calender/${id}/remove_member`);
       history.goBack();
     } catch (err) {
       console.log(err);
@@ -215,7 +213,7 @@ function MemberList({ members }) {
       {members.map((member, i) => (
         <div key={i}>
           <div>name: {member.username}</div>
-          
+          <Button onClick={handleDelete} variant="primary">Delete Member</Button>
         </div>
       ))}
       <Button variant="primary" onClick={handleShow}>

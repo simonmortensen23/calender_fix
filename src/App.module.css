@@ -2,10 +2,30 @@
     font-family: 'Lato', sans-serif;
     background-color: #f8f8f8;
     min-height: 100vh;
+    
 }
 
 .Main {
   padding-top: 81px;
+}
+
+.Content {
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 2px;
+  border: 1px solid #dadadf;
+}
+
+.FillerImage {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+}
+
+.Image {
+  max-height: 40vh;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 * {

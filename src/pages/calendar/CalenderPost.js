@@ -48,7 +48,7 @@ const CalenderPost = (props) => {
       </Card.Body>
       <Card.Body>
         {id && <Card.Text className='text-left'>Task ID: {id}</Card.Text>}
-        {task_info && <Card.Text className={styles.Info}>Task Info:<span className='text-danger'>{task_info}</span></Card.Text>}
+        {task_info && <Card.Text className={styles.Info}><h4>Task Info:</h4><span className='text-danger'>{task_info}</span></Card.Text>}
         <ListGroup className="list-group-flush">
         {task_status && <ListGroup.Item>Status: {task_status}</ListGroup.Item>}
         {created_at && <ListGroup.Item>Created at: {created_at}</ListGroup.Item>}

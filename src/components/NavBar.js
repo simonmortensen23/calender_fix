@@ -5,10 +5,13 @@ import styles from "../styles/NavBar.module.css"
 import {NavLink} from 'react-router-dom'
 import axios from "axios";
 import { useCurrentUser, useSetCurrentUser } from '../context/CurrentUserContext'
+import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+
+  const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
   const handleSignOut = async () => {
     try {
@@ -43,13 +46,14 @@ const NavBar = () => {
 
   
   return (
-    <Navbar className={styles.NavBar} expand="md" fixed="top">
+    <Navbar expanded={expanded} className={styles.NavBar} expand="md" fixed="top">
       <Container>
         <NavLink to='/'>
         <Navbar.Brand><img src={calendar} alt='calendar' height='45' /></Navbar.Brand>
         </NavLink>
         {currentUser && addTaskIcon}
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle ref={ref}
+          onClick={() => setExpanded(!expanded)} aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto text-start">
             <NavLink  className={styles.NavLink} to='/'><i className='fas fa-home'></i>Home</NavLink>

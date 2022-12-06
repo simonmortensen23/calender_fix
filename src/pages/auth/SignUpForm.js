@@ -5,7 +5,9 @@ import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
-import { Alert, Form, Button, Col, Row, Container } from "react-bootstrap";
+import signup from '../../assets/signup.png'
+
+import { Alert, Form, Button, Col, Row, Container, Image } from "react-bootstrap";
 import axios from "axios";
 
 const SignUpForm = () => {
@@ -98,10 +100,14 @@ const SignUpForm = () => {
             </Container>
             </Col>
             <Col
-            md={6}
-            className={`my-auto d-none d-md-block p-2 ${styles.SignUpCol}`}
-            >
-            </Col>
+        md={6}
+        className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}
+      >
+        <Image
+          className={`${appStyles.FillerImage}`}
+          src={signup}
+        />
+      </Col>
             </Row>
             );
           };
