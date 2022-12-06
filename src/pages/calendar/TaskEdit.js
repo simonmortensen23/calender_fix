@@ -4,10 +4,11 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import { Modal } from 'react-bootstrap';
+import { ListGroup, Modal } from 'react-bootstrap';
 import Alert from "react-bootstrap/Alert";
 
 import btnStyles from "../../styles/Button.module.css"
+import appStyles from "../../App.module.css";
 
 import { useHistory } from "react-router";
 import { axiosReq, axiosRes } from "../../api/axiosDefault";
@@ -98,9 +99,9 @@ function TaskEdit() {
     
       <Form.Control name='task_status' as='select' value={task_status} onChange={handleChange}>
       <option>Open this select menu</option>
-      <option value='A'>In Progress</option>
-      <option value='B'>Idle</option>
-      <option value='C'>Done</option>
+      <option value='IN PROGRESS'>In Progress</option>
+      <option value='IDLE'>Idle</option>
+      <option value='DONE'>Done</option>
     </Form.Control>
     </Form.Group>
     <Form.Group>
@@ -127,20 +128,20 @@ function TaskEdit() {
         <Row>
           <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
             <Container
-              className={`d-flex justify-content-center`}
+              className={` ${appStyles.Content} d-flex justify-content-center`}
             >
                 
               <div className="">{formFields}</div>
+            
             </Container>
+            <MemberList members={members} />
           </Col>
-          {/* <Col md={5} lg={4} className="p-0 p-md-2">
-            <Container className={`d-flex justify-content-center`}>{formFields}</Container>
-          </Col> */}
+            
         </Row>
         
       </Form>
       
-      <MemberList members={members} />  
+      
     </Container>
 
     
@@ -188,10 +189,14 @@ function MemberList({ members }) {
   }
 
   const handleDelete = async () => {
-   
-    console.log('SENDING USERNAMNE', taskData?.username);
+    if (!taskData?.username) {
+      // TODO
+      console.warn('No username was provided and no error handling is made...');
+      return;
+    }
+
     try {
-      await axiosRes.delete(`/calender/${id}/remove_member`);
+      await axiosRes.post(`/calender/${id}/remove_member`, { username: taskData?.username });
       history.goBack();
     } catch (err) {
       console.log(err);
@@ -209,15 +214,17 @@ function MemberList({ members }) {
   return (
     <>
     <Container>
-    
+    <div>Members: </div>
       {members.map((member, i) => (
         <div key={i}>
-          <div>name: {member.username}</div>
-          <Button onClick={handleDelete} variant="primary">Delete Member</Button>
+          
+          <ListGroup>
+            <ListGroup.Item>{member.username}</ListGroup.Item></ListGroup>
+          
         </div>
       ))}
-      <Button variant="primary" onClick={handleShow}>
-          Add Member
+      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} onClick={handleShow}>
+          Edit Members
         </Button>
     </Container>
     <Modal

@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
-import Form from 'react-bootstrap/Form'
-import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Alert from "react-bootstrap/Alert";
+import signup from '../../assets/signup.png'
 
-import btnStyles from "../../styles/Button.module.css"
-import styles from "../../styles/TaskCreate.module.css"
+import { Alert, Form, Button, Col, Row, Container, Image } from "react-bootstrap";
+
+import styles from "../../styles/SignInUpForm.module.css";
+import btnStyles from "../../styles/Button.module.css";
+import appStyles from "../../App.module.css";
 
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefault";
@@ -100,18 +98,29 @@ function TaskCreate() {
 
 
   return (
-    <Form className={styles.Form} onSubmit={handleSubmit}>
-    <Row>
+    <Form onSubmit={handleSubmit}>
+    <Row className={styles.Row}>
       <Col className="py-2 p-0 p-md-2  d-md-none" md={7} lg={8}>
         <Container
-          className={`d-flex justify-content-center`}
+          className={`${appStyles.Content} d-flex justify-content-center`}
         >
-       
+     
           <div className="d-md-none">{formFields}</div>
         </Container>
       </Col>
       <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-        <Container className={`d-flex justify-content-center`}>{formFields}</Container>
+    
+        <Container className={`d-flex justify-content-center`}>{formFields}
+        <Col
+        md={6}
+        className={` ${styles.SignInCol}`}
+      >
+        <Image
+          className={`${appStyles.FillerImage}`}
+          src={signup}
+        />
+      </Col>
+        </Container>
       </Col>
     </Row>
   </Form>

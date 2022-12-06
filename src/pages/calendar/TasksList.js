@@ -57,7 +57,7 @@ function TasksList(props) {
         </Container>
       )}</>
       
-    const loggedOutView = <><h1>Welcome to your taskmanager</h1> <p>Log in to see your list of tasks</p></>
+    const loggedOutView = <> <h1>Welcome to your taskmanager</h1> <p>Log in to see your list of tasks</p> </>
 
 
   return (

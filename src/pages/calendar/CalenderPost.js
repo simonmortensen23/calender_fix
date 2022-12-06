@@ -40,7 +40,7 @@ const CalenderPost = (props) => {
   };
   console.log({membership})
   return (
-    <Card className={styles.Card}>
+    <Card className="shadow-2-strong mb-2" >
       <Card.Body>
         <Link to={`/calender/${id}`}>
         {title && <Card.Title className={styles.Title}>{title}</Card.Title>}
@@ -48,7 +48,7 @@ const CalenderPost = (props) => {
       </Card.Body>
       <Card.Body>
         {id && <Card.Text className='text-left'>Task ID: {id}</Card.Text>}
-        {task_info && <Card.Text className={styles.Info}><h4>Task Info:</h4><span className='text-danger'>{task_info}</span></Card.Text>}
+        {task_info && <Card.Text className={`${styles.Info} shadow-sm p-3 mb-5 bg-white rounded`}><h4>Task Info:</h4><span className='text-danger '>{task_info}</span></Card.Text>}
         <ListGroup className="list-group-flush">
         {task_status && <ListGroup.Item>Status: {task_status}</ListGroup.Item>}
         {created_at && <ListGroup.Item>Created at: {created_at}</ListGroup.Item>}
