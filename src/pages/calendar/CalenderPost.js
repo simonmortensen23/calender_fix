@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, ListGroup, Button } from 'react-bootstrap';
+import { Card, ListGroup, Button, Accordion } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useCurrentUser } from "../../context/CurrentUserContext";
@@ -40,15 +40,20 @@ const CalenderPost = (props) => {
   };
   console.log({membership})
   return (
-    <Card className="shadow-2-strong mb-2" >
+    <Card className={styles.Card} >
       <Card.Body>
         <Link to={`/calender/${id}`}>
         {title && <Card.Title className={styles.Title}>{title}</Card.Title>}
           </Link>
-      </Card.Body>
-      <Card.Body>
-        {id && <Card.Text className='text-left'>Task ID: {id}</Card.Text>}
+          {id && <Card.Text className='text-left'>Task ID: {id}</Card.Text>}
         {task_info && <Card.Text className={`${styles.Info} shadow-sm p-3 mb-5 bg-white rounded`}><h4>Task Info:</h4><span className='text-danger '>{task_info}</span></Card.Text>}
+      </Card.Body>
+      <Accordion defaultActiveKey="1">
+      <Accordion.Item eventKey="0">
+        <Accordion.Header>Additional Task Info</Accordion.Header>
+        <Accordion.Body>
+      <Card.Body>
+       
         <ListGroup className="list-group-flush">
         {task_status && <ListGroup.Item>Status: {task_status}</ListGroup.Item>}
         {created_at && <ListGroup.Item>Created at: {created_at}</ListGroup.Item>}
@@ -59,13 +64,21 @@ const CalenderPost = (props) => {
       </ListGroup>
         
         
-        {taskOverview && is_owner && (
+       
+      </Card.Body>
+      </Accordion.Body>
+      </Accordion.Item>
+      </Accordion>
+      
+      {taskOverview && is_owner && (
           <>
+          <Card.Body>
           <Button onClick={handleEdit}>Edit</Button>
           <Button onClick={handleDelete}>Delete</Button>
+          </Card.Body>
           </>
         )}
-      </Card.Body>
+        
     </Card>
   ) 
   
