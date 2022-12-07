@@ -57,22 +57,38 @@ function TaskCreate() {
 
 
   const formFields = (
+    
     <div className="text-center container">
        
   <Form.Group>
     <Form.Label>Title</Form.Label>
     <Form.Control type="text" name='title' placeholder="Title of Task" value={title} onChange={handleChange} />
   </Form.Group>
+  {errors.title?.map((message, idx) => (
+              <Alert key={idx} variant="warning" className="mt-3">
+                {message}
+              </Alert>
+            ))}
   
   
   <Form.Group>
     <Form.Label>Task Details</Form.Label>
     <Form.Control as="textarea" name='task_info' rows={3} value={task_info} onChange={handleChange} />
   </Form.Group>
+  {errors.task_info?.map((message, idx) => (
+              <Alert key={idx} variant="warning" className="mt-3">
+                {message}
+              </Alert>
+            ))}
     <Form.Group>
       <Form.Label>Due Date</Form.Label>
       <Form.Control type='date' name='due_date' value={due_date} onChange={handleChange} />
     </Form.Group>
+    {errors.due_date?.map((message, idx) => (
+              <Alert key={idx} variant="warning" className="mt-3">
+                {message}
+              </Alert>
+            ))}
     <Form.Group>
     
       <Form.Control name='task_status' as='select' value={task_status} onChange={handleChange}>
@@ -82,6 +98,11 @@ function TaskCreate() {
       <option value='DONE'>Done</option>
     </Form.Control>
     </Form.Group>
+    {errors.task_status?.map((message, idx) => (
+              <Alert key={idx} variant="warning" className="mt-3">
+                {message}
+              </Alert>
+            ))}
   <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => history.goBack()}
@@ -91,7 +112,8 @@ function TaskCreate() {
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
         create
       </Button>
-  
+      
+     
     </div>
   )
 
@@ -122,6 +144,7 @@ function TaskCreate() {
       </Col>
         </Container>
       </Col>
+      
     </Row>
   </Form>
   )

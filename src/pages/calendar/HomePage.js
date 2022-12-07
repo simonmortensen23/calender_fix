@@ -28,7 +28,7 @@ const HomePage = () => {
     </Container></>
     const loggedOutView = <>
     <Container className={styles.HomeContainer}>
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '20rem' }}>
     <Card.Img variant="top" src={calendar} />
       <Card.Body>
         <Card.Title className={'font-weight-bold'}>Welcome to your Task Planner</Card.Title>

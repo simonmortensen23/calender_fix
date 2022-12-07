@@ -241,15 +241,21 @@ function MemberList({ members }) {
     <Form.Label>Title</Form.Label>
     <Form.Control type="text" name='add member' placeholder="Add a new member" value={taskData.username} onChange={handleChange} />
   </Form.Group>
+  {errors.username?.map((message, idx) => (
+              <Alert key={idx} variant="warning" className="mt-3">
+                {message}
+              </Alert>
+            ))}
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
             <Button onClick={handleSubmit} variant="primary">Add Member</Button>
-            <Button onClick={handleDelete} variant="primary">Delete Member</Button>
+            <Button onClick={handleDelete} variant="danger">Delete Member</Button>
           </Modal.Footer>
         </Modal>
+        
     </>
   )
 }

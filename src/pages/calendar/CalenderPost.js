@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useCurrentUser } from "../../context/CurrentUserContext";
 import { axiosRes } from "../../api/axiosDefault";
 import styles from '../../styles/CalenderPost.module.css'
+import useClickOutsideToggle from "../../hooks/useClickOutsideToggle";
 
 
 const CalenderPost = (props) => {
@@ -22,8 +23,11 @@ const CalenderPost = (props) => {
   } = props;
 
   const currentUser = useCurrentUser();
-  const is_owner = membership?.value === 'A';
+  const is_owner = membership?.value === 'OWNER';
   const history = useHistory();
+  
+
+  const { expanded, setExpanded, ref } = useClickOutsideToggle();
   
 
   const handleEdit = () => {
@@ -49,8 +53,10 @@ const CalenderPost = (props) => {
         {task_info && <Card.Text className={`${styles.Info} shadow-sm p-3 mb-5 bg-white rounded`}><h4>Task Info:</h4><span className='text-danger '>{task_info}</span></Card.Text>}
       </Card.Body>
       <Accordion defaultActiveKey="1">
-      <Accordion.Item eventKey="0">
-        <Accordion.Header>Additional Task Info</Accordion.Header>
+      <Accordion.Item  eventKey="0">
+        <Accordion.Header >Additional Task Info</Accordion.Header>
+        
+         
         <Accordion.Body>
       <Card.Body>
        
@@ -67,6 +73,7 @@ const CalenderPost = (props) => {
        
       </Card.Body>
       </Accordion.Body>
+     
       </Accordion.Item>
       </Accordion>
       
