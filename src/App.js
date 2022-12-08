@@ -27,7 +27,7 @@ function App() {
         <Route exact path='/calender/create' render={() => <TaskCreate />} />
         <Route exact path='/calender/:id/edit' render={() => <TaskEdit />} />
         <Route exact path='/calender/:id' render={() => <TaskOverview />} />
-        <Route exact path='/calender' render={() => <TasksList message="No tasks found. Adjust your filters."/>} />
+        <Route exact path='/calender' render={() => <TasksList message="No tasks found."/>} />
         <Route exact path='/signin' render={() => <SignInForm />} />
         <Route exact path='/signup' render={() => <SignUpForm />} />
         <Route render={() => <p>Page not found!</p>}/>

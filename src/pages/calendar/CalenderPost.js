@@ -42,7 +42,7 @@ const CalenderPost = (props) => {
       console.log(err);
     }
   };
-  console.log({membership})
+  
   return (
     <Card className={styles.Card} >
       <Card.Body>

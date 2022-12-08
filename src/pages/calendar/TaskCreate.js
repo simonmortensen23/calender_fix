@@ -32,7 +32,7 @@ function TaskCreate() {
 
 
   const handleChange = (event) => {
-    console.log({name: event.target.name, value: event.target.value});
+    
     setTaskData({
       ...taskData,
       [event.target.name]: event.target.value,
@@ -140,21 +140,6 @@ function TaskCreate() {
       </Col>
       </Container>
     </Col>
-    {/* <Col className="my-auto p-0 p-md-2" md={6}>
-  
-      <Container className={`d-flex justify-content-center`}>{formFields}
-      <Col
-      md={6}
-      className={` ${styles.SignInCol}`}
-    >
-      <Image
-        className={`${appStyles.FillerImage}`}
-        src={signup}
-      />
-    </Col>
-      </Container>
-    </Col> */}
-    
   </Row>
 </Form></>
 

@@ -14,7 +14,7 @@ function TaskOverview() {
   const { id } = useParams();
   const [task, setTask] = useState({ results: [] })
   
-  const currentUser = useCurrentUser();
+  
  
   useEffect(() => {
     const handleMount = async () => {
