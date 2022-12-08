@@ -96,6 +96,19 @@
   - user can click anywhere on the screen to collapse navbar and tasks. 
 
 ## Deployment
+1. This project was initially deployed through Heroku, but now changed to Render.
+2. In axiosDefault.js I added the new baseURL from the API on render
+3. Added the handlers.js file and copied in the same baseURL
+4. Added, committed and pushed
+5. On Render I pressed the new + button and chose Static Site
+6. Named the app event_app
+7. In the setting tab I made sure that Root Directory was set to blank and Branch to main
+8. Set the build command to: yarn build
+9. Set the publish directory to build
+10. Pressed Create Static Site
+11. Updated CLIENT_ORIGIN to match Render URL in env.py and in environment file on Render in API
+12. In Redirects/Rewrites I added a rule with the values: "/*, /index.html"
+13. Deployed project and checked that it worked
 
 ## Credits
  - The code institute moments project was used as a guideline for the API and CSS. 
