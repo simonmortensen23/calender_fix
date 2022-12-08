@@ -2,6 +2,9 @@
 
 ## Links
 
+- [Development board](https://github.com/users/simonmortensen23/projects/2/views/1)
+- [User Story board](https://github.com/users/simonmortensen23/projects/2/views/1?layout=table)
+
 ## Table of Contents
 
 - [Introduction](#introduction)
