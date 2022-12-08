@@ -4,6 +4,15 @@
 
 ## Table of Contents
 
+- [Introduction](#introduction)
+- [User Stories](#ux)
+- [Design](#design)
+- [Features](#features)
+- [Technologies](#technologies)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Credits](#credits)
+
 ## UX
 
 ### Site Purpose
