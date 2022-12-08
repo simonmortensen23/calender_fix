@@ -83,7 +83,13 @@
 
 ### Add / Delete task member
 - The task owner can add or delete members on the task.
+
 ![memberedit](https://user-images.githubusercontent.com/43667190/206558399-1d5a4406-8a07-4fa4-b598-aebd0618decd.PNG)
+
+### Page not found
+- If user tries to access an invalid url they will see a page not found page
+
+![pnf](https://user-images.githubusercontent.com/43667190/206558835-68379bcc-5aad-45e5-bd80-73ccf2e74dc1.PNG)
 
 
 
