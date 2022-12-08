@@ -64,9 +64,9 @@
 ### Task List
 - A logged in user can access the Task List that also works as a front page for logged in user
 - Task List with tasks
-![tasklist](https://user-images.githubusercontent.com/43667190/206556885-55999606-5e41-42c2-b3c0-af46c6d8a91b.PNG)
+![tasklist](https://user-images.githubusercontent.com/43667190/206559133-6a2c7c6c-99d2-44f9-b4c1-df681430e49e.PNG)
 - Task List without tasks
-![noresult](https://user-images.githubusercontent.com/43667190/206557452-8242ac2e-a325-4405-9637-6b824971ea91.PNG)
+![noresult](https://user-images.githubusercontent.com/43667190/206559155-ad16932e-f0c0-4fde-a203-771ff2dc1df4.PNG)
 
 ### Task Overview
 - The user can access each task by pressing the header to see it on an individual page. The user can also expand and collapse additional info
