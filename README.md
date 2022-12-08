@@ -1,4 +1,5 @@
 # Task Planner
+![responsive](https://user-images.githubusercontent.com/43667190/206559454-fdf518be-11f2-42bf-9635-4118c9585410.PNG)
 
 ## Links
 
@@ -49,6 +50,11 @@
 ![TaskbarLO](https://user-images.githubusercontent.com/43667190/206555975-5993a8f4-7425-4ddf-ab67-ba14ff4fae6c.PNG)
 - NavBar collapsed on smaller screen
 ![TaskbarCol](https://user-images.githubusercontent.com/43667190/206556021-e1d5c276-0424-4934-8648-9c569f60f12c.PNG)
+
+### Front Page
+- If the user is not registered or logged in they will be welcome by the front page. For logged in user the front page is the task list
+![frontpage](https://user-images.githubusercontent.com/43667190/206559639-e83bbe47-1f45-45df-abc9-08131bef5622.PNG)
+
 
 ### Sign Up / In
 - The user can access Sign Up and Sign In pages if not registered or logged in
