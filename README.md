@@ -2,8 +2,8 @@
 
 ## Links
 
-- [Development board](https://github.com/users/simonmortensen23/projects/2/views/1)
-- [User Story board](https://github.com/users/simonmortensen23/projects/2/views/1?layout=table)
+- [Development board](https://github.com/users/simonmortensen23/projects/4/views/1)
+- [User Story board](https://github.com/users/simonmortensen23/projects/4/views/1?layout=table)
 
 ## Table of Contents
 
@@ -25,8 +25,9 @@
  - The goal of the site is to have an interactive task planner, that is accesible for everyone, and to create an overview of your day to day chores or smaller tasks during the week. The idea is to expand it to events, so the user can add the tasks to a "bigger" event. 
  
 ### User Stories
- -
- - 
+ - I have put user stories as issues as part of agile development you can find the link [here](https://github.com/simonmortensen23/calender_fix/issues)
+
+
  ## Design
  
  ### Color Scheme
