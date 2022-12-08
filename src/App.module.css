@@ -28,6 +28,15 @@
   object-fit: contain;
 }
 
+.Background {
+  background-image: url(assets/calendarbg.jpg);
+  
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  background-position: center;
+}
+
 * {
     box-sizing: border-box;
   }

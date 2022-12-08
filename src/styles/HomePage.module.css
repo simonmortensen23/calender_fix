@@ -1,6 +1,16 @@
+.Background {
+    background-image: url(../assets/calendarbg.jpg);
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    background-position: center;
+}
+
 .HomeContainer {
     display: flex;
-    width: 60%;
+    height: 20vh;
+    width: 40%;
     justify-content:center;
     margin: 0 auto;
 }

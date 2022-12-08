@@ -1,35 +1,58 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Container, Card, Stack } from 'react-bootstrap'
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import styles from "../../styles/HomePage.module.css";
 import { useCurrentUser, useSetCurrentUser } from '../../context/CurrentUserContext'
+
+import { axiosReq } from "../../api/axiosDefault";
+import CalenderPost from "./CalenderPost";
 import calendar from "../../assets/calendar.png"
 
 const HomePage = () => {
     const currentUser = useCurrentUser();
+    const [hasLoaded, setHasLoaded] = useState(false)
+    const [tasks, setTasks] = useState({ results: []})
 
-    const loggedInView = <><Container className={styles.HomeContainer}>
-    <Card style={{ width: '20rem' }}>
-    <Card.Img variant="top" src={calendar} />
-      <Card.Body>
-        <Card.Title className={'font-weight-bold'}>Welcome to your Task Planner</Card.Title>
-        <Card.Text>
-          Welcome to your personal Task Planner! Make your task lists and share them with your friends. From here you can either create a task or check your own list of tasks.
-        </Card.Text>
-        <Stack gap={2} className=" mx-auto">
-        <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`} href='/calender/create'>Create Task</Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`} href='/calender'>Task List</Button>
-      </Stack>
-      </Card.Body>
-    </Card>
-    
- 
-    </Container></>
+
+
+
+    useEffect(() => {
+      const fetchTasks = async () => {
+          try {
+              const { data } = await axiosReq.get(`/calender/`);
+              setTasks(data);
+              setHasLoaded(true);
+            } catch (err) {
+              console.log(err);
+            }
+          };
+      
+          setHasLoaded(false);
+          fetchTasks();
+        }, []);
+
+    const loggedInView = <>{hasLoaded ? (
+      <>
+        {tasks.results.length ? (
+          tasks.results.map((task) => (
+            <CalenderPost key={task.id} {...task} setPosts={setTasks} />
+          ))
+        ) : (
+          <Container>
+            <p>No results</p>
+          </Container>
+        )}
+      </>
+    ) : (
+      <Container>
+        <p>Loading</p>
+      </Container>
+    )}</>
     const loggedOutView = <>
-    <Container className={styles.HomeContainer}>
-    <Card style={{ width: '20rem' }}>
-    <Card.Img variant="top" src={calendar} />
+    <Container className={`${appStyles.Content} ${styles.HomePage}`}>
+    <Card>
+    
       <Card.Body>
         <Card.Title className={'font-weight-bold'}>Welcome to your Task Planner</Card.Title>
         <Card.Text>
@@ -46,7 +69,7 @@ const HomePage = () => {
     </Container>
     </>
   return (
-    <div>
+    <div className='my-auto p-0 p-md-2' md={6}>
     {currentUser ? loggedInView : loggedOutView}
     </div>
   )

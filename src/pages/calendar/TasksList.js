@@ -13,14 +13,11 @@ import { useCurrentUser, useSetCurrentUser } from '../../context/CurrentUserCont
 
 
 function TasksList(props) {
-  const {
-    owner
-  } = props;
+  
   const [tasks, setTasks] = useState({ results: []})
   const [hasLoaded, setHasLoaded] = useState(false)
   const currentUser = useCurrentUser();
-  const setCurrentUser = useSetCurrentUser();
-  const is_owner = currentUser?.username === owner; 
+  
   
   
 
