@@ -41,6 +41,57 @@
  
  ## Features
  
+ ### Navigation bar
+ - The NavBar is shown in the top of the screen
+ - Logged in view
+![TaskbarLI](https://user-images.githubusercontent.com/43667190/206555946-992cf2c0-52e1-420e-9c3b-4a24eb8def0b.PNG)
+- Logged out view
+![TaskbarLO](https://user-images.githubusercontent.com/43667190/206555975-5993a8f4-7425-4ddf-ab67-ba14ff4fae6c.PNG)
+- NavBar collapsed on smaller screen
+![TaskbarCol](https://user-images.githubusercontent.com/43667190/206556021-e1d5c276-0424-4934-8648-9c569f60f12c.PNG)
+
+### Sign Up / In
+- The user can access Sign Up and Sign In pages if not registered or logged in
+- Sign In page
+![signin](https://user-images.githubusercontent.com/43667190/206556380-a88c26b9-710e-43e5-aa59-66b9e2438f71.PNG)
+- Sign Up page
+![signup](https://user-images.githubusercontent.com/43667190/206556410-4d9c2d44-8b0b-4556-bf7a-f4e397dccc93.PNG)
+
+### Create Task
+- When the user has registered or signed in, then the user can access Create Task page
+![createtask](https://user-images.githubusercontent.com/43667190/206556566-60ee7aad-d35b-4374-a34c-43e0b5f845d8.PNG)
+
+### Task List
+- A logged in user can access the Task List that also works as a front page for logged in user
+- Task List with tasks
+![tasklist](https://user-images.githubusercontent.com/43667190/206556885-55999606-5e41-42c2-b3c0-af46c6d8a91b.PNG)
+- Task List without tasks
+![noresult](https://user-images.githubusercontent.com/43667190/206557452-8242ac2e-a325-4405-9637-6b824971ea91.PNG)
+
+### Task Overview
+- The user can access each task by pressing the header to see it on an individual page. The user can also expand and collapse additional info
+- Task Overview if user is owner of the task. Also shows edit and delete buttons
+![taskoverviewOwner](https://user-images.githubusercontent.com/43667190/206557701-e8ff4337-47c2-4499-a021-940d8aa6f696.PNG)
+- Task Overview if user is member of task
+![taskoverviewnotowner](https://user-images.githubusercontent.com/43667190/206557753-03525bb9-5463-49b4-b60d-a7900cd3e99f.PNG)
+- Task Overview, expanded additional info
+![taskoverviewexpanded](https://user-images.githubusercontent.com/43667190/206557874-5fa603a1-b55b-4105-b87b-adc68a9a9b9e.PNG)
+
+### Task Edit
+- The task owner is able to edit information on the task. Can also access Edit members through this view
+![taskedit](https://user-images.githubusercontent.com/43667190/206558232-515dd9c1-4e94-4a75-9ed2-a26e6fd1c412.PNG)
+
+### Add / Delete task member
+- The task owner can add or delete members on the task.
+![memberedit](https://user-images.githubusercontent.com/43667190/206558399-1d5a4406-8a07-4fa4-b598-aebd0618decd.PNG)
+
+
+
+
+
+
+
+ 
  ## Future Features
   - In the future I would like to implement member groups, so the owner of the task can add a group of people instead of individual people.
   - In the future I would like to implement another member role, editor, so designated people other than the owner can edit tasks.
