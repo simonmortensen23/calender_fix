@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import signup from '../../assets/signup.png'
+import calendar from '../../assets/calendar.png'
 
 import { Alert, Form, Button, Col, Row, Container, Image } from "react-bootstrap";
 
@@ -9,6 +9,9 @@ import appStyles from "../../App.module.css";
 
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefault";
+import { useCurrentUser } from '../../context/CurrentUserContext'
+
+import HomePage from "./HomePage"
 
 
 function TaskCreate() {
@@ -25,6 +28,7 @@ function TaskCreate() {
 
   const {title, task_info, due_date, task_status} = taskData;
   const history = useHistory();
+  const currentUser = useCurrentUser();
 
 
   const handleChange = (event) => {
@@ -117,36 +121,51 @@ function TaskCreate() {
     </div>
   )
 
-
-
-  return (
-    <Form onSubmit={handleSubmit}>
-    <Row className={styles.Row}>
-      <Col className="py-2 p-0 p-md-2  d-md-none" md={7} lg={8}>
-        <Container
-          className={`${appStyles.Content} d-flex justify-content-center`}
-        >
-     
-          <div className="d-md-none">{formFields}</div>
-        </Container>
-      </Col>
-      <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-    
-        <Container className={`d-flex justify-content-center`}>{formFields}
+  const loggedInView = <> <Form onSubmit={handleSubmit}>
+  <Row className={styles.Row}>
+    <Col className="my-auto p-0 p-md-2" md={6}>
+      <Container
+        className={`${appStyles.Content} d-flex justify-content-center`}
+      >
+   
+        <div >{formFields}</div>
         <Col
         md={6}
-        className={` ${styles.SignInCol}`}
+        className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}
       >
         <Image
           className={`${appStyles.FillerImage}`}
-          src={signup}
+          src={calendar}
         />
       </Col>
-        </Container>
-      </Col>
-      
-    </Row>
-  </Form>
+      </Container>
+    </Col>
+    {/* <Col className="my-auto p-0 p-md-2" md={6}>
+  
+      <Container className={`d-flex justify-content-center`}>{formFields}
+      <Col
+      md={6}
+      className={` ${styles.SignInCol}`}
+    >
+      <Image
+        className={`${appStyles.FillerImage}`}
+        src={signup}
+      />
+    </Col>
+      </Container>
+    </Col> */}
+    
+  </Row>
+</Form></>
+
+const loggedOutView = <> <HomePage/></>
+
+
+
+  return (
+    <div className='my-auto p-0 p-md-2' md={6}>
+    {currentUser ? loggedInView : loggedOutView}
+    </div>
   )
 }
 

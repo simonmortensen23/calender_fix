@@ -3,11 +3,11 @@ import { Button, Container, Card, Stack } from 'react-bootstrap'
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import styles from "../../styles/HomePage.module.css";
-import { useCurrentUser, useSetCurrentUser } from '../../context/CurrentUserContext'
+import { useCurrentUser} from '../../context/CurrentUserContext'
 
 import { axiosReq } from "../../api/axiosDefault";
 import CalenderPost from "./CalenderPost";
-import calendar from "../../assets/calendar.png"
+
 
 const HomePage = () => {
     const currentUser = useCurrentUser();

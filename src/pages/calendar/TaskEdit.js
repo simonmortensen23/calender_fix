@@ -29,7 +29,7 @@ function TaskEdit() {
     
   })
 
-  const {title, task_info, due_date, task_status, members, membership} = taskData;
+  const {title, task_info, due_date, task_status, members} = taskData;
   const history = useHistory();
   const { id } = useParams()
 
@@ -37,7 +37,7 @@ function TaskEdit() {
     const handleMount = async () => {
         try {
             const {data} = await axiosReq.get(`/calender/${id}/`)
-            const { title, task_info, due_date, task_status, is_owner, members, membership } = data
+            const { title, task_info, due_date, task_status, members, membership } = data
             const parsed_due_date = new Date(due_date).toISOString().substring(0, 10);
 
             setTaskData({ title, task_info, due_date: parsed_due_date, task_status, members, membership })
@@ -85,17 +85,32 @@ function TaskEdit() {
     <Form.Label>Title</Form.Label>
     <Form.Control type="text" name='title' placeholder="Title of Task" value={title} onChange={handleChange} />
   </Form.Group>
+  {errors.title?.map((message, idx) => (
+              <Alert key={idx} variant="warning" className="mt-3">
+                {message}
+              </Alert>
+            ))}
   
   
   <Form.Group>
     <Form.Label>Task Details</Form.Label>
     <Form.Control as="textarea" name='task_info' rows={3} value={task_info} onChange={handleChange} />
   </Form.Group>
+  {errors.task_info?.map((message, idx) => (
+              <Alert key={idx} variant="warning" className="mt-3">
+                {message}
+              </Alert>
+            ))}
     <Form.Group>
       <Form.Label>Due Date</Form.Label>
       <Form.Control type='date' name='due_date' value={due_date} onChange={handleChange} />
     </Form.Group>
     <Form.Group>
+    {errors.due_date?.map((message, idx) => (
+              <Alert key={idx} variant="warning" className="mt-3">
+                {message}
+              </Alert>
+            ))}
     
       <Form.Control name='task_status' as='select' value={task_status} onChange={handleChange}>
       <option>Open this select menu</option>
@@ -104,16 +119,21 @@ function TaskEdit() {
       <option value='DONE'>Done</option>
     </Form.Control>
     </Form.Group>
+    {errors.task_status?.map((message, idx) => (
+              <Alert key={idx} variant="warning" className="mt-3">
+                {message}
+              </Alert>
+            ))}
     <Form.Group>
    
     </Form.Group>
   <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
+        className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
         onClick={() => history.goBack()}
       >
         cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+      <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`} type="submit">
         save
       </Button>
   
@@ -176,7 +196,7 @@ function MemberList({ members }) {
     const taskDataForm = new FormData();
     taskDataForm.append('username', taskData?.username)
     
-    console.log('SENDING USERNAMNE', taskData?.username);
+    
 
     try {
       await axiosReq.post(`/calender/${id}/add_member`, taskDataForm);
@@ -203,14 +223,10 @@ function MemberList({ members }) {
     }
   };
 
-  console.log({ members })
   
 
 
-  const onMemberClick = (member) => {
-    console.log(' on member click:', member);
-  };
-
+ 
   return (
     <>
     <Container>

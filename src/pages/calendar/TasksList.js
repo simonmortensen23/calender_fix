@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 
 
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
+
 import Container from "react-bootstrap/Container";
 
 import { axiosReq } from "../../api/axiosDefault";
 import CalenderPost from "./CalenderPost";
-import { useCurrentUser, useSetCurrentUser } from '../../context/CurrentUserContext'
+import { useCurrentUser} from '../../context/CurrentUserContext'
 
 
 
@@ -58,12 +57,9 @@ function TasksList(props) {
 
 
   return (
-    <Row className="h-100">
-      <Col className="" lg={8}>
-        
-        {currentUser ? loggedInView : loggedOutView}
-      </Col>
-    </Row>
+    <div className='my-auto p-0 p-md-2' md={6}>
+    {currentUser ? loggedInView : loggedOutView}
+    </div>
   );
 }
 

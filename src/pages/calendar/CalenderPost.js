@@ -2,10 +2,10 @@ import React from 'react'
 import { Card, ListGroup, Button, Accordion } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import { useCurrentUser } from "../../context/CurrentUserContext";
 import { axiosRes } from "../../api/axiosDefault";
 import styles from '../../styles/CalenderPost.module.css'
-import useClickOutsideToggle from "../../hooks/useClickOutsideToggle";
+
+import btnStyles from "../../styles/Button.module.css";
 
 
 const CalenderPost = (props) => {
@@ -22,12 +22,12 @@ const CalenderPost = (props) => {
     membership,
   } = props;
 
-  const currentUser = useCurrentUser();
+  
   const is_owner = membership?.value === 'OWNER';
   const history = useHistory();
   
 
-  const { expanded, setExpanded, ref } = useClickOutsideToggle();
+  
   
 
   const handleEdit = () => {
@@ -80,8 +80,8 @@ const CalenderPost = (props) => {
       {taskOverview && is_owner && (
           <>
           <Card.Body>
-          <Button onClick={handleEdit}>Edit</Button>
-          <Button onClick={handleDelete}>Delete</Button>
+          <Button className={`${btnStyles.Button} ${btnStyles.Bright}`} onClick={handleEdit}>Edit</Button>
+          <Button className={`${btnStyles.Button} ${btnStyles.Bright}`} onClick={handleDelete}>Delete</Button>
           </Card.Body>
           </>
         )}
