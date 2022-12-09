@@ -117,7 +117,7 @@
  ### Fixed
   - Had no gitignore for the initial commits, so the env.py was pushed to github. Added the .gitignore and changed the values of the secret key and made a new cloudinary account.
 
-## Technologies used
+## Technologies
 
 ### Languages
  - HTML
