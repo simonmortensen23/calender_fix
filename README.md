@@ -38,7 +38,7 @@
  
  ### Wireframes
  
- [Wireframes for project]
+ [Wireframes for project](https://github.com/simonmortensen23/calender_fix/blob/main/wireframes.md)
  
  ### Color Scheme
  - The main colors for the website are green rgb(13,155,9), bright mint rgb(62,242,169) and white (rgb(255,255,255)) to keep a simple and consistent look throught the website.
