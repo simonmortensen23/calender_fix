@@ -108,7 +108,11 @@
   - In the future I would like to implement member groups, so the owner of the task can add a group of people instead of individual people.
   - In the future I would like to implement another member role, editor, so designated people other than the owner can edit tasks.
   - In the future I would like to implement the ability to create an event, that the user can add tasks to. 
-  
+ 
+ ## Testing
+ - Testing for the front end part can be found here [Test Front End](https://github.com/simonmortensen23/calender_fix/blob/main/testing.md)
+ - Testing for the back end part can be found here [Test Back End](https://github.com/simonmortensen23/calender_api_fix#testing)
+ 
  ## Bugs
  ### Fixed
   - Had no gitignore for the initial commits, so the env.py was pushed to github. Added the .gitignore and changed the values of the secret key and made a new cloudinary account.
