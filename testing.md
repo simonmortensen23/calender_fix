@@ -1,8 +1,6 @@
 # Task Planner Front End Tests
 Back to [README.md](https://github.com/simonmortensen23/calender_fix/blob/main/README.md)
 
-## Contents
-
 ## Manual Testing
 - Manual testing were carried out for the URL paths and CRUD functionality.
 
