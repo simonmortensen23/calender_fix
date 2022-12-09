@@ -3,8 +3,8 @@
 
 ## Links
 
-- Deployed API render [link](https://event-app-4r4k.onrender.com/)
-- Deployed Frontend render [link](https://event-api-c33l.onrender.com/)
+- Deployed API render [link](https://event-api-c33l.onrender.com/)
+- Deployed Frontend render [link](https://event-app-4r4k.onrender.com/)
 - API backend [repository](https://github.com/simonmortensen23/calender_api_fix)
 - [Development board](https://github.com/users/simonmortensen23/projects/4/views/1)
 - [User Story board](https://github.com/users/simonmortensen23/projects/4/views/1?layout=table)
